@@ -4,6 +4,7 @@ import { useInitials } from '@/composables/useInitials';
 import type { User } from '@/types';
 import { computed } from 'vue';
 
+
 interface Props {
     user: User;
     showEmail?: boolean;
@@ -21,7 +22,12 @@ const showAvatar = computed(() => props.user.avatar && props.user.avatar !== '')
 
 <template>
     <Avatar class="h-8 w-8 overflow-hidden rounded-lg">
-        <AvatarImage v-if="showAvatar" :src="user.avatar" :alt="user.name" />
+        <AvatarImage
+            v-if="user.profile_photo_url"
+            :key="(user.profile_photo_url || '') + Date.now()"
+            :src="user.profile_photo_url + '?t=' + Date.now()"
+            :alt="user.name"
+        />
         <AvatarFallback class="rounded-lg text-black dark:text-white">
             {{ getInitials(user.name) }}
         </AvatarFallback>

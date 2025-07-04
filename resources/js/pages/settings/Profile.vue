@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { Head, Link, useForm, usePage } from '@inertiajs/vue3';
+import { ref } from 'vue';
+import { useInitials } from '@/composables/useInitials';
+import axios from 'axios';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 import DeleteUser from '@/components/DeleteUser.vue';
 import HeadingSmall from '@/components/HeadingSmall.vue';
@@ -31,7 +35,37 @@ const user = page.props.auth.user as User;
 const form = useForm({
     name: user.name,
     email: user.email,
+    avatar: '',
 });
+
+const avatarInput = ref<HTMLInputElement | null>(null);
+const avatarPreview = ref<string | null>(null);
+
+const { getInitials } = useInitials();
+
+function triggerAvatarInput() {
+    avatarInput.value?.click();
+}
+
+function handleAvatarChange(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) {
+        avatarPreview.value = URL.createObjectURL(file);
+        const formData = new FormData();
+        formData.append('avatar', file);
+        axios.post('/api/user/avatar', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' },
+            withCredentials: true,
+        })
+        .then(response => {
+            user.profile_photo_url = response.data.avatar_url;
+            avatarPreview.value = null;
+        })
+        .catch(error => {
+            form.errors.avatar = error.response?.data?.message || 'Failed to upload avatar.';
+        });
+    }
+}
 
 const submit = () => {
     form.patch(route('profile.update'), {
@@ -46,9 +80,39 @@ const submit = () => {
 
         <SettingsLayout>
             <div class="flex flex-col space-y-6">
-                <HeadingSmall title="Profile information" description="Update your name and email address" />
+                <HeadingSmall title="Profile information" description="Update your profile information and avatar" />
 
                 <form @submit.prevent="submit" class="space-y-6">
+                    <div class="flex items-center gap-6">
+                        <div class="relative cursor-pointer" @click="triggerAvatarInput">
+                            <Avatar class="h-24 w-24 overflow-hidden rounded-lg">
+                                <AvatarImage
+                                    v-if="avatarPreview || user.profile_photo_url"
+                                    :key="(user.profile_photo_url || '') + Date.now()"
+                                    :src="avatarPreview || (user.profile_photo_url + '?t=' + Date.now())"
+                                    :alt="user.name"
+                                />
+                                <AvatarFallback class="rounded-lg text-2xl text-black dark:text-white">
+                                    {{ getInitials(user.name) }}
+                                </AvatarFallback>
+                            </Avatar>
+                            <input
+                                ref="avatarInput"
+                                type="file"
+                                accept="image/*"
+                                class="absolute inset-0 cursor-pointer opacity-0"
+                                @change="handleAvatarChange"
+                                style="display: none"
+                            />
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-muted-foreground">
+                                Click on the avatar to upload a new one. We recommend using a square image for best results.
+                            </p>
+                            <InputError class="mt-2" :message="form.errors.avatar" />
+                        </div>
+                    </div>
+
                     <div class="grid gap-2">
                         <Label for="name">Name</Label>
                         <Input id="name" class="mt-1 block w-full" v-model="form.name" required autocomplete="name" placeholder="Full name" />
@@ -96,7 +160,7 @@ const submit = () => {
                             leave-active-class="transition ease-in-out"
                             leave-to-class="opacity-0"
                         >
-                            <p v-show="form.recentlySuccessful" class="text-sm text-neutral-600">Saved.</p>
+                            <p v-show="form.recentlySuccessful" class="text-sm text-neutral-600">Saved!</p>
                         </Transition>
                     </div>
                 </form>
