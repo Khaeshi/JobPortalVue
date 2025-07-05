@@ -68,7 +68,7 @@ Route::middleware(['auth:sanctum'])->get('/api/dashboard-stats', function (Reque
 
     // Example: Replace these with real queries
     return [
-        'active_jobs' => \App\Models\Job::where('status', 'active')->count(),
+        'active_jobs' => \App\Models\Job::where('status', 'active')->count(), //still to evaluate when jobs page is done
         'applications' => $user->applications()->count(),
         'interviews' => $user->interviews()->count(),
         'saved_jobs' => $user->savedJobs()->count(),
