@@ -46,4 +46,17 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //code review needed
+    public function applications() {
+        return $this->hasMany(Application::class);
+    }
+
+    public function interviews() {
+        return $this->hasMany(Interview::class);
+    }
+
+    public function savedJobs() {
+        return $this->belongsToMany(Job::class, 'saved_jobs');
+    }
 }

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
+        primary: { // color  light blue, main blue dark blue
           50:  '#e3f2fd',
           100: '#bbdefb',
           200: '#90caf9',
@@ -21,7 +21,7 @@ module.exports = {
           900: '#0d47a1',
           950: '#082a4c',
         },
-        accent: {
+        accent: { // color light yellow, orange, gold(darker)
           50:  '#fff8e1',
           100: '#ffecb3',
           200: '#ffe082',

@@ -5,7 +5,7 @@ import NavUser from '@/components/NavUser.vue';
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
+import { Briefcase, Building2, LayoutGrid, Users, Plus, HelpCircle } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
@@ -14,18 +14,33 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Jobs',
+        href: '/jobs',
+        icon: Briefcase,
+    },
+    {
+        title: 'Companies',
+        href: '/companies',
+        icon: Building2,
+    },
+    {
+        title: 'Applications',
+        href: '/applications',
+        icon: Users,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: Folder,
+        title: 'Post a Job',
+        href: '/jobs/create',
+        icon: Plus,
     },
     {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
+        title: 'Help Center',
+        href: '/help',
+        icon: HelpCircle,
     },
 ];
 </script>
