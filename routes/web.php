@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\UserAvatarController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\JobController;
 
 Route::get('/', function () {
     if (auth()->check()) {
@@ -17,12 +19,10 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Job Portal Routes
-Route::get('/jobs', function () {
-    return Inertia::render('Jobs/Index');
-})->name('jobportal');
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::get('/jobs/create', function () {
-    return Inertia::render('Jobs/Create');
+    return Inertia::render('jobs/Create');
 })->name('jobs.create');
 
 Route::get('/companies', function () {

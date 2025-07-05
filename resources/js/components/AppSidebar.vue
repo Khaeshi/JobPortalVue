@@ -29,14 +29,15 @@ const mainNavItems: NavItem[] = [
         href: '/applications',
         icon: Users,
     },
-];
-
-const footerNavItems: NavItem[] = [
     {
         title: 'Post a Job',
         href: '/jobs/create',
         icon: Plus,
     },
+];
+
+const footerNavItems: NavItem[] = [
+
     {
         title: 'Help Center',
         href: '/help',
