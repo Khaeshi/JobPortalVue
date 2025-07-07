@@ -28,4 +28,9 @@ class Job extends Model
         'requirements' => 'array',
         'benefits' => 'array',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
 }

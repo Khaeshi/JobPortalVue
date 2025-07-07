@@ -49,14 +49,20 @@ class User extends Authenticatable
 
     //code review needed
     public function applications() {
-        return $this->hasMany(Application::class);
+        return $this->hasMany(\App\Models\Application::class);
     }
 
     public function interviews() {
-        return $this->hasMany(Interview::class);
+        return $this->hasMany(\App\Models\Interview::class);
     }
 
     public function savedJobs() {
-        return $this->belongsToMany(Job::class, 'saved_jobs');
+        return $this->belongsToMany(\App\Models\Job::class, 'saved_jobs');
+    }
+
+    //usage for relationship of user to jobs
+    public function jobs()
+    {
+        return $this->hasMany(\App\Models\Job::class);
     }
 }

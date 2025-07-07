@@ -19,16 +19,25 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Job Portal Routes
-Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.Index');
 
 Route::get('/jobs/create', function () {
     return Inertia::render('jobs/Create');
 })->name('jobs.create');
 
+Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
+
+Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
+    ->middleware(['auth', 'verified'])
+    ->name('jobs.destroy');
+
+//companies
 Route::get('/companies', function () {
     return Inertia::render('Companies/Index');
 })->name('companies');
 
+
+//application
 Route::get('/applications', function () {
     return Inertia::render('Applications/Index');
 })->name('applications');
@@ -66,12 +75,14 @@ Route::get('/api/user/{id}/avatar', [UserAvatarController::class, 'show']);
 Route::middleware(['auth:sanctum'])->get('/api/dashboard-stats', function (Request $request) {
     $user = $request->user();
 
-    // Example: Replace these with real queries
     return [
-        'active_jobs' => \App\Models\Job::where('status', 'active')->count(), //still to evaluate when jobs page is done
-        'applications' => $user->applications()->count(),
-        'interviews' => $user->interviews()->count(),
-        'saved_jobs' => $user->savedJobs()->count(),
+        'active_jobs' => \App\Models\Job::where('status', 'active')->count(),
+        //'applications' => $user->applications()->count(),
+        //'interviews' => $user->interviews()->count(),
+        //'saved_jobs' => $user->savedJobs()->count(),
+        'applications' => 0,
+        'interviews' => 0,
+        'saved_jobs' => 0,
     ];
 });
 

@@ -18,6 +18,7 @@ const form = useForm({
     description: '',
     requirements: [''],
     benefits: [''],
+    status: 'active',
 });
 
 const jobTypes = ['Full-time', 'Part-time', 'Contract', 'Internship', 'Remote'];
@@ -69,6 +70,13 @@ function removeBenefit(index: number) {
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Salary</label>
                                 <input v-model="form.salary" type="text" class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition" required placeholder="e.g. $80k - $120k" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Status</label>
+                                <select v-model="form.status" class="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition" required>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
                             </div>
                         </div>
                         <div class="mt-6">

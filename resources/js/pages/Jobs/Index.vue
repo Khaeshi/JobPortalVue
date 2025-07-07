@@ -3,7 +3,6 @@ import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { type BreadcrumbItem } from '@/types';
 import { ref } from 'vue';
-import { usePage } from '@inertiajs/vue3';
 import { Building2, MapPin, Clock, Briefcase, Calendar, GraduationCap, X } from 'lucide-vue-next';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -13,15 +12,28 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-// Get jobs from Inertia page props
-const page = usePage();
-const jobs = ref(page.props.jobs || []);
+interface Job {
+  id: number;
+  title: string;
+  type: string;
+  company: string;
+  location: string;
+  posted: string;
+  salary: string;
+  description?: string;
+  requirements?: string[];
+  benefits?: { value: string }[];
+  status: string;
+  // ...other fields
+}
+
+const { jobs } = defineProps<{ jobs: Job[] }>();
 
 // Job details modal state
-const selectedJob = ref(null);
+const selectedJob = ref<Job | null>(null);
 const isModalOpen = ref(false);
 
-const openJobDetails = (job) => {
+const openJobDetails = (job: Job) => {
     selectedJob.value = job;
     isModalOpen.value = true;
 };
@@ -148,6 +160,12 @@ const closeJobDetails = () => {
                                     <p class="font-medium">{{ selectedJob?.salary }}</p>
                                 </div>
                             </div>
+                            <div>
+                                <span class="font-semibold">Status:</span>
+                                <span v-if="selectedJob && selectedJob.status" :class="selectedJob.status === 'active' ? 'text-green-500' : 'text-red-500'">
+                                    {{ selectedJob?.status }}
+                                </span>
+                            </div>
                         </div>
 
                         <!-- Job Description -->
@@ -159,21 +177,23 @@ const closeJobDetails = () => {
                         <!-- Requirements -->
                         <div>
                             <h3 class="mb-2 text-lg font-semibold">Requirements</h3>
-                            <ul class="list-inside list-disc space-y-1 text-gray-600 dark:text-gray-400">
-                                <li v-for="(req, index) in selectedJob?.requirements" :key="index">
+                            <ul v-if="selectedJob?.requirements && selectedJob.requirements.length" class="list-inside list-disc space-y-1 text-gray-600 dark:text-gray-400">
+                                <li v-for="(req, index) in selectedJob.requirements" :key="index">
                                     {{ req }}
                                 </li>
                             </ul>
+                            <p v-else class="text-gray-400">No requirements listed.</p>
                         </div>
 
                         <!-- Benefits -->
                         <div>
                             <h3 class="mb-2 text-lg font-semibold">Benefits</h3>
-                            <ul class="list-inside list-disc space-y-1 text-gray-600 dark:text-gray-400">
-                                <li v-for="(benefit, index) in selectedJob?.benefits" :key="index">
-                                    {{ benefit.value }}
+                            <ul v-if="selectedJob?.benefits && selectedJob.benefits.length" class="list-inside list-disc space-y-1 text-gray-600 dark:text-gray-400">
+                                <li v-for="(benefit, index) in selectedJob.benefits" :key="index">
+                                    {{ benefit }}
                                 </li>
                             </ul>
+                            <p v-else class="text-gray-400">No benefits listed.</p>
                         </div>
 
                         <!-- Apply Button -->

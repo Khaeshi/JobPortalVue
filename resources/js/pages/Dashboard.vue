@@ -180,6 +180,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                     </div>
                 </div>
             </div>
+
+            <!-- user Jobs-->
+            <div>
+
+            </div>
         </div>
     </AppLayout>
 </template>
