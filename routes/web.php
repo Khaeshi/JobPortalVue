@@ -33,13 +33,13 @@ Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
 
 //companies
 Route::get('/companies', function () {
-    return Inertia::render('Companies/Index');
+    return Inertia::render('companies/Index');
 })->name('companies');
 
 
 //application
 Route::get('/applications', function () {
-    return Inertia::render('Applications/Index');
+    return Inertia::render('applications/Index');
 })->name('applications');
 
 // Footer and other pages
