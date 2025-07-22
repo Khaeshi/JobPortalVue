@@ -40,9 +40,9 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-6 p-6">
             <!-- Welcome Section -->
-            <div class="rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 p-6 text-white">
+            <div class="rounded-xl bg-gradient-to-r from-[var(--primary-600)] to-[var(--primary-700)] p-6 text-white">
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Welcome back {{ user.name.split(' ')[0] }}!</h1>
-                <p class="mt-2 text-primary-100 dark:text-primary-200">Here's what's happening with your job search today.</p>
+                <p class="mt-2 text-[var(--primary-100)] dark:text-primary-200">Here's what's happening with your job search today.</p>
             </div>
 
             <!-- Stats Cards -->
@@ -53,8 +53,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <p class="text-sm font-medium text-gray-600 dark:text-black">Active Jobs</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ stats.active_jobs }}</p>
                         </div>
-                        <div class="rounded-lg bg-primary-100 p-3">
-                            <Briefcase class="h-6 w-6 text-primary-600 dark:text-black" />
+                        <div class="rounded-lg bg-[var(--primary-100)] p-3">
+                            <Briefcase class="h-6 w-6 text-[var(--primary-600)] dark:text-black" />
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                             <p class="text-sm font-medium text-gray-600 dark:text-black">Applications</p>
                             <p class="text-2xl font-bold text-gray-900 dark:text-black">{{ stats.applications }}</p>
                         </div>
-                        <div class="rounded-lg bg-accent-100 p-3">
-                            <Users class="h-6 w-6 text-primary-600 dark:text-black" />
+                        <div class="rounded-lg bg-[var(--accent-100)] p-3">
+                            <Users class="h-6 w-6 text-[var(--primary-600)] dark:text-black" />
                         </div>
                     </div>
                 </div>
@@ -105,8 +105,8 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <div class="space-y-4">
                         <div class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                                    <Building2 class="h-6 w-6 text-primary-600" />
+                                <div class="w-12 h-12 bg-[var(--primary-100)] rounded-lg flex items-center justify-center">
+                                    <Building2 class="h-6 w-6 text-[var(--primary-600)]" />
                                 </div>
                                 <div>
                                     <h3 class="font-medium text-gray-900 dark:text-black">Senior Frontend Developer</h3>
@@ -123,15 +123,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                 </div>
                             </div>
-                            <button class="px-4 py-2 bg-primary-600 text-black rounded-lg hover:bg-primary-700 transition-colors">
+                            <button class="px-4 py-2 bg-[var(--primary-600)] text-black rounded-lg hover:bg-[var(--primary-700)] transition-colors">
                                 Apply Now
                             </button>
                         </div>
 
                         <div class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-accent-100 rounded-lg flex items-center justify-center">
-                                    <Building2 class="h-6 w-6 text-accent-600" />
+                                <div class="w-12 h-12 bg-[var(--accent-100)] rounded-lg flex items-center justify-center">
+                                    <Building2 class="h-6 w-6 text-[var(--accent-600)]" />
                                 </div>
                                 <div>
                                     <h3 class="font-medium text-gray-900 dark:text-black">Product Manager</h3>
@@ -148,7 +148,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                 </div>
                             </div>
-                            <button class="px-4 py-2 bg-accent-600 text-black rounded-lg hover:bg-accent-700 transition-colors">
+                            <button class="px-4 py-2 bg-[var(--accent-600)] text-black rounded-lg hover:bg-[var(--accent-700)] transition-colors">
                                 Apply Now
                             </button>
                         </div>

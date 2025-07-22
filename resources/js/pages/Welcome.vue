@@ -93,13 +93,13 @@ const socialLinks = [
 <template>
     <Head title="Welcome" />
     <GuestLayout>
-      <div class="min-h-screen bg-gradient-to-b dark:from-gray-900 dark:to-gray-800" style="background: linear-gradient(to bottom, var(--primary-50), var(--primary-100));">
+      <div class="min-h-screen bg-gradient-to-b from-[var(--primary-50)] to-[var(--primary-100)] dark:from-gray-900 dark:to-gray-800">
         <!-- Navigation -->
-        <nav class="fixed top-0 z-50 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b dark:border-gray-800" style="border-bottom: 1px solid var(--primary-100);">
+        <nav class="fixed top-0 z-50 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-[var(--primary-100)] dark:border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     <div class="flex items-center">
-                        <Link href="/" class="text-2xl font-bold dark:text-primary-200" style="color: var(--primary-700);">
+                        <Link href="/" class="text-2xl font-bold text-[var(--primary-700)] dark:text-primary-200">
                             JobPortal
                         </Link>
                     </div>
@@ -107,23 +107,20 @@ const socialLinks = [
                         <Link
                             v-if="page.props.auth.user"
                             :href="route('dashboard')"
-                            class="dark:text-primary-200 hover:text-primary-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                            style="color: var(--primary-700);"
+                            class="text-[var(--primary-700)] dark:text-primary-200 hover:text-[var(--primary-900)] dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                         >
                             Dashboard
                         </Link>
                         <template v-else>
                             <Link
                                 :href="route('login')"
-                                class="dark:text-primary-200 hover:text-primary-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                style="color: var(--primary-700);"
+                                class="text-[var(--primary-700)] dark:text-primary-200 hover:text-[var(--primary-900)] dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                             >
                                 Log in
                             </Link>
                             <Link
                                 :href="route('register')"
-                                class="text-white px-4 py-2 rounded-md text-sm font-medium shadow hover:bg-primary-700"
-                                style="background-color: var(--primary-600);"
+                                class="bg-[var(--primary-600)] text-white px-4 py-2 rounded-xl text-sm font-medium shadow hover:bg-[var(--primary-700)]"
                             >
                                 Get Started
                             </Link>
@@ -134,19 +131,18 @@ const socialLinks = [
         </nav>
 
         <!-- Hero Section -->
-        <div class="pt-32 pb-20 text-center px-4 bg-gradient-to-b dark:from-gray-900 dark:to-gray-800" style="background: linear-gradient(to bottom, var(--primary-100), var(--primary-50));">
-            <h1 class="text-5xl font-bold dark:text-white mb-6" style="color: var(--primary-800);">
+        <div class="pt-32 pb-20 text-center px-4 bg-gradient-to-b from-[var(--primary-100)] to-[var(--primary-50)] dark:from-gray-900 dark:to-gray-800">
+            <h1 class="text-5xl font-bold text-[var(--primary-800)] dark:text-white mb-6">
                 Find Your Dream Job Today
             </h1>
-            <p class="text-xl dark:text-primary-100 mb-8 max-w-2xl mx-auto" style="color: var(--primary-600);">
+            <p class="text-xl text-[var(--primary-600)] dark:text-primary-100 mb-8 max-w-2xl mx-auto">
                 Connect with top employers and discover opportunities that match your skills and aspirations.
             </p>
             <div class="flex justify-center gap-4">
                 <Link
                     :href="route('register')"
-                    class="text-white px-6 py-3 rounded-lg text-lg font-semibold transition-colors shadow hover:bg-primary-700"
+                    class="bg-[var(--primary-600)] text-white px-6 py-3 rounded-xl text-lg font-semibold transition-colors shadow hover:bg-[var(--primary-700)]"
                     v-if="!page.props.auth.user"
-                    style="background-color: var(--primary-600);"
                 >
                     Start Your Journey
                 </Link>
@@ -154,16 +150,14 @@ const socialLinks = [
                 <Link
                     v-if="page.props.auth.user"
                     :href="route('dashboard')"
-                    class="text-white px-6 py-3 rounded-lg text-lg font-semibold transition-colors shadow hover:bg-primary-700"
-                    style="background-color: var(--primary-600);"
+                    class="bg-[var(--primary-600)] text-white px-6 py-3 rounded-xl text-lg font-semibold transition-colors shadow hover:bg-[var(--primary-700)]"
                 >
                     Go to Dashboard
                 </Link>
                 <!-- Conditional link for Browse Jobs -->
                 <Link
                     :href="page.props.auth.user ? route('jobportal') : route('login')"
-                    class="text-white px-6 py-3 rounded-lg text-lg font-semibold border transition-colors shadow hover:bg-accent-600"
-                    style="background-color: var(--accent-500); border: 1px solid var(--accent-600);"
+                    class="bg-[var(--accent-500)] text-white px-6 py-3 rounded-xl text-lg font-semibold border border-[var(--accent-600)] transition-colors shadow hover:bg-[var(--accent-600)]"
                 >
                     Browse Jobs
                 </Link>
@@ -173,46 +167,43 @@ const socialLinks = [
         <!-- Features Section -->
         <div class="py-20 bg-white dark:bg-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 dark:text-white" style="color: var(--primary-800);">Why Choose Us</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 text-[var(--primary-800)] dark:text-white">Why Choose Us</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div
                         v-for="feature in features"
                         :key="feature.title"
-                        class="dark:bg-gray-700 p-6 rounded-xl transition-colors shadow hover:bg-primary-100 dark:hover:bg-gray-600"
-                        :style="{ backgroundColor: 'var(--primary-50)' }"
+                        class="bg-[var(--primary-50)] dark:bg-gray-700 p-6 rounded-xl transition-colors shadow hover:bg-[var(--primary-100)] dark:hover:bg-gray-600"
                     >
                         <component
                             :is="feature.icon"
-                            class="w-12 h-12 mb-4"
-                            :style="{ color: 'var(--primary-500)' }"
+                            class="w-12 h-12 text-[var(--primary-500)] mb-4"
                         />
-                        <h3 class="text-xl font-semibold mb-2 dark:text-white" :style="{ color: 'var(--primary-800)' }">{{ feature.title }}</h3>
-                        <p class="dark:text-primary-100" :style="{ color: 'var(--primary-600)' }">{{ feature.description }}</p>
+                        <h3 class="text-xl font-semibold mb-2 text-[var(--primary-800)] dark:text-white">{{ feature.title }}</h3>
+                        <p class="text-[var(--primary-600)] dark:text-primary-100">{{ feature.description }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Benefits Section -->
-        <div class="py-20 dark:bg-gray-900" style="background-color: var(--primary-50);">
+        <div class="py-20 bg-[var(--primary-50)] dark:bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-bold text-center mb-12 dark:text-white" style="color: var(--primary-800);">Platform Benefits</h2>
+                <h2 class="text-3xl font-bold text-center mb-12 text-[var(--primary-800)] dark:text-white">Platform Benefits</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div
                         v-for="benefit in benefits"
                         :key="benefit"
-                        class="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 rounded-lg border shadow"
-                        style="border: 1px solid var(--primary-100);"
+                        class="flex items-center space-x-3 p-4 bg-white dark:bg-gray-800 rounded-lg border border-[var(--primary-100)] shadow"
                     >
                         <CheckCircle2 class="w-6 h-6 text-green-500" />
-                        <span class="dark:text-primary-100" style="color: var(--primary-700);">{{ benefit }}</span>
+                        <span class="text-[var(--primary-700)] dark:text-primary-100">{{ benefit }}</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- CTA Section -->
-        <div class="py-20" style="background: linear-gradient(to right, var(--primary-600), var(--accent-500));">
+        <div class="py-20 bg-gradient-to-r from-[var(--primary-600)] to-[var(--accent-500)">
             <div class="max-w-4xl mx-auto text-center px-4">
                 <h2 class="text-3xl font-bold mb-6 text-white">Ready to Take the Next Step?</h2>
                 <p class="text-lg mb-8 text-white/90">
@@ -220,8 +211,7 @@ const socialLinks = [
                 </p>
                 <Link
                     :href="route('register')"
-                    class="inline-block text-primary-600 px-8 py-3 rounded-lg text-lg font-semibold transition-colors shadow hover:bg-primary-50"
-                    style="background-color: white; color: var(--primary-600);"
+                    class="inline-block bg-white text-[var(--primary-600)] px-8 py-3 rounded-xl text-lg font-semibold transition-colors shadow hover:bg-[var(--primary-50)]"
                 >
                     Create Your Account
                 </Link>
@@ -229,7 +219,7 @@ const socialLinks = [
         </div>
 
         <!-- Footer -->
-        <footer class="dark:bg-gray-900 dark:text-gray-400 py-12 border-t dark:border-gray-800" style="background-color: var(--primary-900); color: var(--primary-100); border-top: 1px solid var(--primary-800);">
+        <footer class="bg-[var(--primary-900)] dark:bg-gray-900 text-[var(--primary-100)] dark:text-gray-400 py-12 border-t border-[var(--primary-800)] dark:border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div>
@@ -263,7 +253,7 @@ const socialLinks = [
                                 :title="social.name"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="dark:text-gray-400 transition-colors duration-200"
+                                class="text-[var(--primary-100)] dark:text-gray-400 transition-colors duration-200"
                                 :style="social.color.includes('primary') ? { color: `var(--primary-${social.color.match(/\d+/)?.[0] || '100'})` } : social.color.includes('accent') ? { color: `var(--accent-${social.color.match(/\d+/)?.[0] || '500'})` } : {}"
                             >
                                 <component
@@ -274,7 +264,7 @@ const socialLinks = [
                         </div>
                     </div>
                 </div>
-                <div class="mt-8 pt-8 border-t dark:border-gray-800 text-sm text-center" style="border-top: 1px solid var(--primary-800);">
+                <div class="mt-8 pt-8 border-t border-[var(--primary-800)] dark:border-gray-800 text-sm text-center">
                     <p>&copy; {{ new Date().getFullYear() }} JobPortal all rights reserved. Created by Khaesey Angel Tablante.</p>
                 </div>
             </div>
