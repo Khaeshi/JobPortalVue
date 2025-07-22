@@ -69,7 +69,7 @@ Contributions are welcome! Please open issues or pull requests for features, bug
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source and available under the (LICENSE).
 
 ---
 **JobPortalVue** — a robust, modern job portal solution built with Laravel, Vue, TypeScript, and Tailwind CSS v4.
