@@ -120,6 +120,11 @@
 
   --sidebar-background: #fff;
   --sidebar-foreground: #22223b;
+  --destructive: #dc2626;
+  --destructive-foreground: #fff;
+  --secondary: #64748b;
+  --secondary-foreground: #fff;
+  --accent-foreground: #fff;
 }
 
 .dark {

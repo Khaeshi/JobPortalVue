@@ -8,16 +8,16 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
+          'bg-[var(--primary-600)] text-white shadow-xs hover:bg-[var(--primary-700)] focus-visible:border-[var(--primary-700)] focus-visible:ring-[var(--primary-700)]/50 focus-visible:ring-[3px]',
         destructive:
-          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+          'bg-[var(--destructive)] text-[var(--destructive-foreground)] shadow-xs hover:bg-[var(--destructive-dark)] focus-visible:ring-[var(--destructive-dark)]/20 dark:focus-visible:ring-[var(--destructive-dark)]/40 dark:bg-[var(--destructive-dark)]/60',
         outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+          'border bg-[var(--background)] shadow-xs hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] dark:bg-[var(--input)]/30 dark:border-[var(--input)] dark:hover:bg-[var(--input)]/50',
         secondary:
-          'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+          'bg-[var(--secondary)] text-[var(--secondary-foreground)] shadow-xs hover:bg-[var(--secondary-dark)]',
         ghost:
-          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'hover:bg-[var(--accent)] hover:text-[var(--accent-foreground)] dark:hover:bg-[var(--accent)]/50',
+        link: 'text-[var(--primary-600)] underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

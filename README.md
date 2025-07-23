@@ -8,8 +8,6 @@ JobPortalVue is a modern job portal application built with Laravel as the backen
 - **Job Listings:** Employers can post jobs, and seekers can browse or search listings by category, location, or keyword.
 - **Application Management:** Job seekers can apply to jobs, track applications, and upload resumes.
 - **Employer Dashboard:** Manage job postings, view applicants, and review candidate profiles.
-- **Admin Panel:** Oversee platform users, jobs, and moderate content.
-- **Real-Time Notifications:** Get instant updates on application status and new job postings.
 - **Responsive Design:** Fully responsive UI powered by Tailwind CSS v4.
 - **TypeScript Support:** Maintainable and robust frontend codebase with static typing.
 - **API-Driven:** Clean RESTful APIs powered by Laravel for seamless frontend-backend communication.
@@ -37,7 +35,7 @@ JobPortalVue is a modern job portal application built with Laravel as the backen
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/JobPortalVue.git
+   git clone https://github.com/Khaeshi/JobPortalVue.git
    cd JobPortalVue
    ```
 
