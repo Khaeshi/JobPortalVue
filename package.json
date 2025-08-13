@@ -4,6 +4,8 @@
     "scripts": {
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
+        "build:static": "vite build --config vite.static.config.ts",
+        "build:static:watch": "vite build --config vite.static.config.ts --watch",
         "dev": "vite",
         "format": "prettier --write resources/",
         "format:check": "prettier --check resources/",
