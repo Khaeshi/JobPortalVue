@@ -120,11 +120,46 @@
 
   --sidebar-background: #fff;
   --sidebar-foreground: #22223b;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #374151;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #111827;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #3b82f6;
   --destructive: #dc2626;
   --destructive-foreground: #fff;
+  --destructive-dark: #b91c1c;
   --secondary: #64748b;
   --secondary-foreground: #fff;
-  --accent-foreground: #fff;
+  --secondary-dark: #475569;
+
+  /* Add missing color definitions for profile modal */
+  --muted-foreground: #6b7280;
+  --muted: #f3f4f6;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --background: #ffffff;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --ring: #3b82f6;
+
+  /* Fix accent colors for proper contrast */
+  --accent: #f3f4f6;
+  --accent-foreground: #111827;
+
+  /* Chart colors for light mode */
+  --chart-1: #3b82f6;
+  --chart-2: #10b981;
+  --chart-3: #f59e0b;
+  --chart-4: #8b5cf6;
+  --chart-5: #ef4444;
+
+  /* Theme color mapping */
+  --primary: #2196f3;
+  --primary-foreground: #ffffff;
 }
 
 .dark {
@@ -133,17 +168,19 @@
   --card: hsl(0 0% 3.9%);
   --card-foreground: hsl(0 0% 98%);
   --popover: hsl(0 0% 3.9%);
-  --popover-foreground: 0 0% 98%;
+  --popover-foreground: hsl(0 0% 98%);
   --primary: hsl(0 0% 98%);
   --primary-foreground: hsl(0 0% 9%);
   --secondary: hsl(0 0% 14.9%);
   --secondary-foreground: hsl(0 0% 98%);
+  --secondary-dark: hsl(0 0% 20%);
   --muted: hsl(0 0% 16.08%);
   --muted-foreground: hsl(0 0% 63.9%);
   --accent: hsl(0 0% 14.9%);
   --accent-foreground: hsl(0 0% 98%);
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 98%);
+  --destructive-dark: hsl(0 84% 50%);
   --border: hsl(0 0% 14.9%);
   --input: hsl(0 0% 14.9%);
   --ring: hsl(0 0% 83.1%);
