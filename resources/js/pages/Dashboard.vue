@@ -22,7 +22,7 @@ onMounted(async () => {
         const response = await axios.get('/api/dashboard-stats', { withCredentials: true });
         stats.value = response.data
     } catch(e){
-        console.log(e, "Error on line 21");
+        console.log(e, "Cannot fetch dashboard stats");
     }
 })
 

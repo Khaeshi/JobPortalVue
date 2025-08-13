@@ -57,7 +57,7 @@ const closeJobDetails = () => {
             </div>
 
             <!-- Recent Jobs Section -->
-            <div class="relative flex-1 rounded-xl border border-sidebar-border/70 bg-white p-6 dark:border-sidebar-border dark:bg-gray-800">
+            <div class="relative flex-1 rounded-xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-800">
                 <h2 class="mb-4 text-xl font-semibold">Recent Job Listings</h2>
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     <div

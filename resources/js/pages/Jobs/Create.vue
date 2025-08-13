@@ -142,7 +142,7 @@ function removeBenefit(index: number) {
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full rounded-xl bg-primary-600 px-8 py-3 text-lg font-semibold text-white shadow hover:bg-primary-700 transition-colors">
+                    <button type="submit" class="w-full rounded-xl bg-[var(--primary-600)] px-8 py-3 text-lg font-semibold text-white shadow hover:bg-[var(--primary-700)] transition-colors">
                         <span v-if="form.processing">Posting...</span>
                         <span v-else>Post Job</span>
                     </button>
