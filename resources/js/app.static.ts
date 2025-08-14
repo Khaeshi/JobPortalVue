@@ -1,7 +1,8 @@
 import { createApp } from 'vue';
 import '../css/app.css';
-import StaticDemo from './components/StaticDemo.vue';
+import App from './static/App.vue';
+import { router } from './static/router';
 
-// Create a simple Vue app for static demo
-const app = createApp(StaticDemo);
+const app = createApp(App);
+app.use(router);
 app.mount('#app');
