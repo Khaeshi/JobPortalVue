@@ -1,7 +1,6 @@
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import tailwindcss from "@tailwindcss/vite";
-import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
