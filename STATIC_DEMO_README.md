@@ -1,6 +1,6 @@
-# JobPortal Vue - Static Demo
+# JobPortal Vue – Static Demo (GitHub Pages)
 
-This is a static demo version of the JobPortal Vue application, specifically designed to showcase the profile modal styling fixes after updating to Tailwind CSS 4.
+This static demo lets you showcase parts of the app (Dashboard, Jobs, etc.) on GitHub Pages without Laravel/Inertia. It reuses your real Vue pages and components, with small shims for Inertia and Ziggy, and a hash-based router.
 
 ## 🚀 Quick Start
 
@@ -8,7 +8,7 @@ This is a static demo version of the JobPortal Vue application, specifically des
 
 ```bash
 # Install dependencies (if not already done)
-npm install
+npm ci
 
 # Build the static version
 npm run build:static
@@ -19,17 +19,13 @@ npm run build:static:watch
 
 The built files will be in the `dist-static` directory.
 
-### Local Development
+### Local Development / Preview
 
 ```bash
-# Start the main Laravel app
-npm run dev
-
-# In another terminal, build static demo with watch mode
-npm run build:static:watch
+npm run preview:static
 ```
 
-Then serve the `dist-static` folder with any static file server:
+Or serve the `dist-static` folder with any static file server:
 
 ```bash
 # Using Python
@@ -46,11 +42,11 @@ cd dist-static && php -S localhost:8000
 
 ### Automatic Deployment
 
-The demo automatically deploys to GitHub Pages when you push to the `main` branch. The GitHub Action will:
+The demo automatically deploys to GitHub Pages when you push to `main`. The GitHub Action will:
 
 1. Build the static version
 2. Deploy to GitHub Pages
-3. Make it available at `https://yourusername.github.io/yourrepo`
+3. Make it available at `https://<username>.github.io/<repo>/`
 
 ### Manual Deployment
 
@@ -59,22 +55,43 @@ The demo automatically deploys to GitHub Pages when you push to the `main` branc
 3. Push the branch: `git push origin gh-pages`
 4. Enable GitHub Pages in your repository settings
 
-## 📁 Project Structure
+## 📁 Project Structure (static demo)
 
 ```
-├── resources/js/
-│   ├── app.static.ts          # Static entry point
-│   └── components/
-│       └── StaticDemo.vue     # Main demo component
 ├── static-demo/
-│   └── index.html             # Static HTML entry point
-├── vite.static.config.ts      # Vite config for static builds
-├── .github/workflows/
-│   └── deploy-static.yml      # GitHub Actions deployment
-└── dist-static/               # Built static files (generated)
+│   └── index.html                   # HTML entry used by Vite (root)
+├── resources/js/
+│   ├── app.static.ts                # Static boot file
+│   ├── components/StaticDemo.vue    # “JobPortal Demo” home page
+│   └── static/
+│       ├── App.vue                  # Static root (renders RouterView only)
+│       ├── router.ts                # Hash-based routes (/#/…)
+│       ├── inertia-mock.ts          # Head/usePage/useForm/Link/router shims
+│       └── ziggy-mock.ts            # route() shim
+├── vite.static.config.ts            # Static build config (aliases, base, root)
+├── .github/workflows/deploy-pages.yml  # GitHub Pages workflow
+└── dist-static/                     # Build output (generated)
 ```
 
-## 🎨 What's Demonstrated
+Notes
+- Static routing uses hash mode: URLs look like `/#/dashboard`.
+- Vite `base: './'` ensures relative assets (required for Pages subpaths).
+- Aliases in `vite.static.config.ts` swap real Inertia/Ziggy with mocks for static builds.
+
+## 🔌 How it works
+
+- Static entry: `static-demo/index.html` → loads `resources/js/app.static.ts`.
+- Root: `resources/js/static/App.vue` renders only `<RouterView />`. Pages themselves decide their layout. This avoids double-wrapping.
+- Router: `resources/js/static/router.ts` defines routes. Pass props here if a page expects them.
+- Inertia mock: `resources/js/static/inertia-mock.ts`
+  - `Head` sets `document.title`
+  - `usePage()` returns `{ props: { auth.user, ziggy, sidebarOpen }, url }`
+  - `useForm()` adds a mock `post()` for demos
+  - `Link` renders an `<a href="#...">` using hash navigation
+  - `router.flushAll()` is a no-op
+- Ziggy mock: `resources/js/static/ziggy-mock.ts` exports `route(name)` to map route names to static paths.
+
+## 🎨 What’s in the demo
 
 - **Profile Modal**: Fixed styling after Tailwind CSS 4 update
 - **Color System**: All color variables properly defined in CSS
@@ -97,7 +114,7 @@ Edit `StaticDemo.vue` to showcase additional components:
 </template>
 ```
 
-### Modifying Colors
+### Modifying colors
 
 Update the color variables in `resources/css/app.css`:
 
@@ -109,6 +126,26 @@ Update the color variables in `resources/css/app.css`:
 ```
 
 ## 🐛 Troubleshooting
+
+### Double header/duplicate sidebar trigger
+- Cause: the static root and page both wrapped content with a layout.
+- Fix: keep `resources/js/static/App.vue` minimal (only `<RouterView />`). Do not add an extra `AppLayout` wrapper here.
+
+### `TypeError: r.route is not a function`
+- Cause: static build didn’t have Ziggy’s `route()`.
+- Fixes already in repo:
+  - `ziggy-mock.ts` exports `route()` and sets `window.route` in browser.
+  - `inertia-mock.ts` provides `usePage().props.ziggy.route = route`.
+  - If a component calls a different path (e.g. `usePage().props.ziggy.routes`), extend the mock accordingly.
+
+### Links don’t work on GitHub Pages
+- Use hash routes (`createWebHashHistory`) in `resources/js/static/router.ts`.
+- Ensure `vite.static.config.ts` has `base: './'`.
+- The workflow copies `index.html` to `404.html` so SPA refreshes still work.
+
+### Sidebar doesn’t toggle
+- The toggle lives in `AppSidebarHeader.vue` → `SidebarTrigger` using the sidebar provider context.
+- If you see no effect, make sure your page uses its own `AppLayout` (and the static root doesn’t wrap it again).
 
 ### Build Issues
 

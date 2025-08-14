@@ -3,6 +3,8 @@ import StaticDemo from '@/components/StaticDemo.vue';
 import Dashboard from '@/pages/Dashboard.vue';
 import JobsIndex from '@/pages/Jobs/Index.vue';
 import JobsCreate from '@/pages/Jobs/Create.vue';
+import Companies from '@/pages/Companies/Index.vue';
+import Applications from '@/pages/Applications/Index.vue'
 
 const mockJobs = [
     {
@@ -27,6 +29,8 @@ export const router = createRouter({
         { path: '/dashboard', component: Dashboard },
         { path: '/jobs', component: JobsIndex, props: { jobs: mockJobs } },
         { path: '/jobs/create', component: JobsCreate },
+        { path: '/companies', component:Companies, props: {} },
+        { path: '/applications', component: Applications, props: {} }
     ],
 });
 

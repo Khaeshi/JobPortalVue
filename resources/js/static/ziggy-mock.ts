@@ -9,14 +9,19 @@ export function route(name: string): string {
         companies: '/companies',
         applications: '/applications',
         help: '/help',
+        jobportal: '/jobs',
+        about: '/about',
+        contact: '/contact',
+        privacy: '/privacy',
+        terms: '/terms',
     };
     return routes[name] ?? '/';
 }
 
 // Expose as global for templates that use bare `route(...)`
 try {
-    // @ts-ignore
-    if (typeof window !== 'undefined') window.route = route;
+    // "@ts-expect-error"
+    if (typeof window !== 'undefined') (window as any).route = route;
 } catch {
     // noop in non-browser
 }
