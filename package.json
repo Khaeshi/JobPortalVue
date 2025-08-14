@@ -5,6 +5,7 @@
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
         "build:static": "vite build --config vite.static.config.ts",
+        "preview:static": "vite preview --config vite.static.config.ts --strictPort --port 5173",
         "build:static:watch": "vite build --config vite.static.config.ts --watch",
         "dev": "vite",
         "format": "prettier --write resources/",

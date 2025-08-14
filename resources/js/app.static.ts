@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import './css/app.css';
+import '../css/app.css';
 import StaticDemo from './components/StaticDemo.vue';
 
 // Create a simple Vue app for static demo

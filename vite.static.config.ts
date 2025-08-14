@@ -5,6 +5,8 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    root: 'static-demo',
+    publicDir: '../public',
     plugins: [
         tailwindcss(),
         vue({
@@ -22,12 +24,9 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: 'dist-static',
-        rollupOptions: {
-            input: {
-                main: resolve(__dirname, 'resources/js/app.ts'),
-            },
-        },
+        outDir: '../dist-static',
+        emptyOutDir: true,
+        rollupOptions: {},
     },
     base: './', // This ensures assets use relative paths
 });

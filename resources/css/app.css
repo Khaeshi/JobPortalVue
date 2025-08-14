@@ -9,6 +9,7 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../**/*.vue';
 
 @custom-variant dark (&:is(.dark *));
 
