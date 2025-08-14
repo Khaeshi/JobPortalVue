@@ -7,9 +7,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 
 <template>
     <AppLayout :breadcrumbs="[]">
-        <div class="container mx-auto px-4 pb-10">
-            <RouterView />
-        </div>
+        <RouterView />
     </AppLayout>
 </template>
 
