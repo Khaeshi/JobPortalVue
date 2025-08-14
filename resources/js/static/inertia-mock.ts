@@ -1,4 +1,5 @@
 import { defineComponent, h, onMounted, watch, reactive } from 'vue';
+import { route as ziggyRoute } from './ziggy-mock';
 
 // Minimal Head replacement: sets document.title when provided
 export const Head = defineComponent<{ title?: string }>({
@@ -30,6 +31,11 @@ export function usePage<T = any>() {
                     updated_at: '',
                 },
             },
+            ziggy: {
+                location: typeof window !== 'undefined' ? window.location.href : '',
+                route: ziggyRoute,
+            },
+            sideBarOpen: true,
         },
         url: typeof window !== 'undefined' ? window.location.hash.replace('#', '') || '/' : '/',
     } as unknown as { props: T };

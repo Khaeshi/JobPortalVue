@@ -22,7 +22,6 @@ export default defineConfig({
             '@': path.resolve(__dirname, './resources/js'),
             '@inertiajs/vue3': path.resolve(__dirname, './resources/js/static/inertia-mock.ts'),
             'ziggy-js': path.resolve(__dirname, './resources/js/static/ziggy-mock.ts'),
-            '@/layouts/AppLayout.vue': path.resolve(__dirname, './resources/js/static/AppLayoutPassthrough.vue'),
         },
     },
     build: {
