@@ -6,9 +6,7 @@ import AppLayout from '@/layouts/AppLayout.vue';
 </script>
 
 <template>
-    <AppLayout :breadcrumbs="[]">
-        <RouterView />
-    </AppLayout>
+    <RouterView />
 </template>
 
 
