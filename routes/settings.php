@@ -16,6 +16,6 @@ Route::middleware('auth')->group(function () {
     Route::put('settings/password', [PasswordController::class, 'update'])->name('password.update');
 
     Route::get('settings/appearance', function () {
-        return Inertia::render('Settings/Appearance');
+        return Inertia::render('settings/Appearance');
     })->name('appearance');
 });

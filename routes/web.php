@@ -22,7 +22,7 @@ Route::get('dashboard', function () {
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::get('/jobs/create', function () {
-    return Inertia::render('jobs/Create');
+    return Inertia::render('Jobs/Create');
 })->name('jobs.create');
 
 Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
@@ -33,13 +33,13 @@ Route::delete('/jobs/{job}', [JobController::class, 'destroy'])
 
 //companies
 Route::get('/companies', function () {
-    return Inertia::render('companies/Index');
+    return Inertia::render('Companies/Index');
 })->name('companies');
 
 
 //application
 Route::get('/applications', function () {
-    return Inertia::render('applications/Index');
+    return Inertia::render('Applications/Index');
 })->name('applications');
 
 // Footer and other pages
