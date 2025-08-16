@@ -19,10 +19,10 @@ Route::get('dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Job Portal Routes
-Route::get('/jobs', [JobController::class, 'index'])->name('jobs.Index');
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
 
 Route::get('/jobs/create', function () {
-    return Inertia::render('jobs/Create');
+    return Inertia::render('Jobs/Create');
 })->name('jobs.create');
 
 Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
@@ -39,7 +39,7 @@ Route::get('/companies', function () {
 
 //application
 Route::get('/applications', function () {
-    return Inertia::render('applications/Index');
+    return Inertia::render('Applications/Index');
 })->name('applications');
 
 // Footer and other pages

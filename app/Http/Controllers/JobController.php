@@ -12,7 +12,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::latest()->get();
-        return Inertia::render('jobs/Index', [
+        return Inertia::render('Jobs/Index', [
             'jobs' => $jobs,
         ]);
     }
@@ -31,7 +31,7 @@ class JobController extends Controller
         //create the job
         $job = $request->user()->jobs()->create($validated);
 
-        return redirect()->route('jobs.Index')->with('success','Job posted successfully!');
+        return redirect()->route('jobs.index')->with('success','Job posted successfully!');
     }
 
     public function destroy(Job $job)
@@ -40,7 +40,7 @@ class JobController extends Controller
             abort(403,'Unauthorized');
     }
     $job->delete();
-    return redirect()->route('jobs.Index')->with('success','Job deleted successfully');
+    return redirect()->route('jobs.index')->with('success','Job deleted successfully');
     }
 }
 
