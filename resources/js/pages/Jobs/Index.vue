@@ -50,14 +50,14 @@ const closeJobDetails = () => {
 <template>
     <Head title="Jobs" />
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
+        <div class="flex h-full flex-1 flex-col gap-2 rounded-xl p-4">
             <!-- Stats Grid -->
             <div class="grid auto-rows-min gap-4 md:grid-cols-4">
                 <!-- ... Previous stats panes code ... -->
             </div>
 
             <!-- Recent Jobs Section -->
-            <div class="relative flex-1 rounded-xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-gray-800">
+            <div class="relative flex-1 rounded-xl  border-gray-200 dark:border-gray-700 p-6 shadow-sm border bg-white dark:bg-gray-800">
                 <h2 class="mb-4 text-xl font-semibold">Recent Job Listings</h2>
                 <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     <div

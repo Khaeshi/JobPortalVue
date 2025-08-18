@@ -40,7 +40,7 @@ function removeBenefit(index: number) {
 <template>
     <Head title="Post a Job" />
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 py-8">
+        <div class="flex h-full flex-1 flex-col items-center justify-center bg-gray-50 dark:bg-background py-6 px-4">
             <div class="w-full max-w-2xl rounded-2xl bg-white dark:bg-gray-800 shadow-xl border border-gray-200 dark:border-gray-700 p-8">
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Post a Job</h1>
                 <form @submit.prevent="form.post('/jobs')" class="space-y-8">

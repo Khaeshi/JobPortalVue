@@ -103,15 +103,15 @@ const breadcrumbs: BreadcrumbItem[] = [
                 </div>
                 <div class="p-6">
                     <div class="space-y-4">
-                        <div class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
+                        <div class="grid p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center">
+                            <div class="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
                                 <div class="w-12 h-12 bg-[var(--primary-100)] rounded-lg flex items-center justify-center">
                                     <Building2 class="h-6 w-6 text-[var(--primary-600)]" />
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <h3 class="font-medium text-gray-900 dark:text-black">Senior Frontend Developer</h3>
                                     <p class="text-sm text-gray-600 dark:text-black">TechCorp Inc.</p>
-                                    <div class="flex items-center space-x-4 mt-1">
+                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                                         <span class="flex items-center text-xs text-gray-500">
                                             <MapPin class="h-3 w-3 mr-1" />
                                             Remote
@@ -123,20 +123,20 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                 </div>
                             </div>
-                            <button class="px-4 py-2 bg-[var(--primary-600)] text-black rounded-lg hover:bg-[var(--primary-700)] transition-colors">
+                            <button class="px-4 py-2 bg-[var(--primary-600)] text-black rounded-lg hover:bg-[var(--primary-700)] transition-colors w-full sm:w-auto sm:justify-self-end">
                                 Apply Now
                             </button>
                         </div>
 
-                        <div class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
+                        <div class="grid p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center">
+                            <div class="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
                                 <div class="w-12 h-12 bg-[var(--accent-100)] rounded-lg flex items-center justify-center">
                                     <Building2 class="h-6 w-6 text-[var(--accent-600)]" />
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <h3 class="font-medium text-gray-900 dark:text-black">Product Manager</h3>
                                     <p class="text-sm text-gray-600 dark:text-black">InnovateLabs</p>
-                                    <div class="flex items-center space-x-4 mt-1">
+                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                                         <span class="flex items-center text-xs text-gray-500">
                                             <MapPin class="h-3 w-3 mr-1" />
                                             San Francisco
@@ -148,20 +148,20 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                 </div>
                             </div>
-                            <button class="px-4 py-2 bg-[var(--accent-600)] text-black rounded-lg hover:bg-[var(--accent-700)] transition-colors">
+                            <button class="px-4 py-2 bg-[var(--accent-600)] text-black rounded-lg hover:bg-[var(--accent-700)] transition-colors w-full sm:w-auto sm:justify-self-end">
                                 Apply Now
                             </button>
                         </div>
 
-                        <div class="flex items-center justify-between p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
-                            <div class="flex items-center space-x-4">
+                        <div class="grid p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center">
+                            <div class="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
                                 <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                                     <Building2 class="h-6 w-6 text-green-600" />
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <h3 class="font-medium text-gray-900 dark:text-black">UX Designer</h3>
                                     <p class="text-sm text-gray-600 dark:text-black">DesignStudio</p>
-                                    <div class="flex items-center space-x-4 mt-1">
+                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
                                         <span class="flex items-center text-xs text-gray-500">
                                             <MapPin class="h-3 w-3 mr-1" />
                                             New York
@@ -173,7 +173,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                                     </div>
                                 </div>
                             </div>
-                            <button class="px-4 py-2 bg-green-600 text-black rounded-lg hover:bg-green-700 transition-colors">
+                            <button class="px-4 py-2 bg-green-600 text-black rounded-lg hover:bg-green-700 transition-colors w-full sm:w-auto sm:justify-self-end">
                                 Apply Now
                             </button>
                         </div>
