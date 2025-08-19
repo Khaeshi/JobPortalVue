@@ -86,5 +86,22 @@ Route::middleware(['auth:sanctum'])->get('/api/dashboard-stats', function (Reque
     ];
 });
 
+Route::middleware(['auth:sanctum'])->get('/api/recent-jobs', function (Request $request) {
+    $recentJobs = \App\Models\Job::latest()->take(3)->get();
+
+    return $recentJobs->map(function ($job) {
+        return [
+            'id' => $job->id,
+            'title' => $job->title,
+            'company' => $job->company,
+            'location' => $job->location,
+            'type' => $job->type,
+            'salary' => $job->salary,
+            'status' => $job->status,
+            'created_at' => $job->created_at,
+        ];
+    });
+});
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import AppLayout from '@/layouts/AppLayout.vue';
+import DashboardRecentJob from '@/components/DashboardRecentJob.vue';
 import { type BreadcrumbItem, type SharedData } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import { Briefcase, Users, TrendingUp, Building2, MapPin, DollarSign } from 'lucide-vue-next';
+import { Briefcase, Users, TrendingUp, Building2 } from 'lucide-vue-next';
 import axios from 'axios';
 import {ref, onMounted} from 'vue';
 import { usePage } from '@inertiajs/vue3';
@@ -17,12 +18,37 @@ const stats = ref({
     saved_jobs: 0,
 })
 
+interface Job {
+    id: number;
+    title: string;
+    company: string;
+    location: string;
+    type: string;
+    salary: string;
+    status: string;
+    created_at: string;
+}
+
+const recentJobs = ref<Job[]>([]);
+const recentJobsLoading = ref(true);
+const recentJobsError = ref<string | null>(null);
+
 onMounted(async () => {
     try{
         const response = await axios.get('/api/dashboard-stats', { withCredentials: true });
         stats.value = response.data
     } catch(e){
         console.log(e, "Cannot fetch dashboard stats");
+    }
+
+    try {
+        const jobsRes = await axios.get('/api/recent-jobs', { withCredentials: true });
+        recentJobs.value = jobsRes.data;
+    } catch (e) {
+        recentJobsError.value = 'Failed to load recent jobs';
+        console.log(e, "Cannot fetch recent jobs");
+    } finally {
+        recentJobsLoading.value = false;
     }
 })
 
@@ -102,88 +128,22 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-black">Recent Job Opportunities</h2>
                 </div>
                 <div class="p-6">
-                    <div class="space-y-4">
-                        <div class="grid p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center">
-                            <div class="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
-                                <div class="w-12 h-12 bg-[var(--primary-100)] rounded-lg flex items-center justify-center">
-                                    <Building2 class="h-6 w-6 text-[var(--primary-600)]" />
-                                </div>
-                                <div class="min-w-0">
-                                    <h3 class="font-medium text-gray-900 dark:text-black">Senior Frontend Developer</h3>
-                                    <p class="text-sm text-gray-600 dark:text-black">TechCorp Inc.</p>
-                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-                                        <span class="flex items-center text-xs text-gray-500">
-                                            <MapPin class="h-3 w-3 mr-1" />
-                                            Remote
-                                        </span>
-                                        <span class="flex items-center text-xs text-gray-500">
-                                            <DollarSign class="h-3 w-3 mr-1" />
-                                            $80k - $120k
-                                        </span>
-                                    </div>
-                                </div>
+                    <div v-if="recentJobsLoading" class="space-y-4">
+                        <div class="grid p-4 rounded-lg border border-gray-100 gap-4 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center animate-pulse">
+                            <div class="w-12 h-12 bg-gray-200 rounded-lg"></div>
+                            <div class="space-y-2">
+                                <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                                <div class="h-3 bg-gray-200 rounded w-1/2"></div>
                             </div>
-                            <button class="px-4 py-2 bg-[var(--primary-600)] text-black rounded-lg hover:bg-[var(--primary-700)] transition-colors w-full sm:w-auto sm:justify-self-end">
-                                Apply Now
-                            </button>
-                        </div>
-
-                        <div class="grid p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center">
-                            <div class="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
-                                <div class="w-12 h-12 bg-[var(--accent-100)] rounded-lg flex items-center justify-center">
-                                    <Building2 class="h-6 w-6 text-[var(--accent-600)]" />
-                                </div>
-                                <div class="min-w-0">
-                                    <h3 class="font-medium text-gray-900 dark:text-black">Product Manager</h3>
-                                    <p class="text-sm text-gray-600 dark:text-black">InnovateLabs</p>
-                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-                                        <span class="flex items-center text-xs text-gray-500">
-                                            <MapPin class="h-3 w-3 mr-1" />
-                                            San Francisco
-                                        </span>
-                                        <span class="flex items-center text-xs text-gray-500">
-                                            <DollarSign class="h-3 w-3 mr-1" />
-                                            $100k - $150k
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="px-4 py-2 bg-[var(--accent-600)] text-black rounded-lg hover:bg-[var(--accent-700)] transition-colors w-full sm:w-auto sm:justify-self-end">
-                                Apply Now
-                            </button>
-                        </div>
-
-                        <div class="grid p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-[auto_1fr_auto] items-center">
-                            <div class="flex items-center gap-4 sm:gap-6 min-w-0 flex-1">
-                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <Building2 class="h-6 w-6 text-green-600" />
-                                </div>
-                                <div class="min-w-0">
-                                    <h3 class="font-medium text-gray-900 dark:text-black">UX Designer</h3>
-                                    <p class="text-sm text-gray-600 dark:text-black">DesignStudio</p>
-                                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-1">
-                                        <span class="flex items-center text-xs text-gray-500">
-                                            <MapPin class="h-3 w-3 mr-1" />
-                                            New York
-                                        </span>
-                                        <span class="flex items-center text-xs text-gray-500">
-                                            <DollarSign class="h-3 w-3 mr-1" />
-                                            $70k - $110k
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="px-4 py-2 bg-green-600 text-black rounded-lg hover:bg-green-700 transition-colors w-full sm:w-auto sm:justify-self-end">
-                                Apply Now
-                            </button>
+                            <div class="h-8 w-24 bg-gray-200 rounded"></div>
                         </div>
                     </div>
+                    <div v-else-if="recentJobsError" class="text-red-600">{{ recentJobsError }}</div>
+                    <div v-else-if="recentJobs.length === 0" class="text-gray-500">No recent jobs found</div>
+                    <div v-else class="space-y-4">
+                        <DashboardRecentJob v-for="job in recentJobs" :key="job.id" :job="job" />
+                    </div>
                 </div>
-            </div>
-
-            <!-- user Jobs-->
-            <div>
-
             </div>
         </div>
     </AppLayout>

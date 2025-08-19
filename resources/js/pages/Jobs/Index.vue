@@ -24,7 +24,6 @@ interface Job {
   requirements?: string[];
   benefits?: { value: string }[];
   status: string;
-  // ...other fields
 }
 
 const { jobs } = defineProps<{ jobs: Job[] }>();
